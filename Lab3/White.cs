@@ -9,7 +9,21 @@ namespace Lab3
             double averageHeight = 0;
 
             // code here
+            if (n <= 0)
+            {
+                return 0;
+            }
 
+            double sum = 0;
+
+            for (int i = 0; i < n; i++)
+            {
+                double.TryParse(Console.ReadLine(), out double height);
+                sum += height;
+            }
+
+            averageHeight = (double) sum / n;
+           
             // end
 
             return averageHeight;
@@ -19,7 +33,20 @@ namespace Lab3
             double bestResult = 0;
 
             // code here
+            if (n <= 0)
+            {
+                return 0;
+            }
 
+            for (int i = 0; i < n; i++)
+            {
+                double.TryParse(Console.ReadLine(), out double time);
+
+                if (i == 0 || time < bestResult)
+                {
+                    bestResult = time;
+                }
+            }
             // end
 
             return bestResult;
@@ -29,7 +56,15 @@ namespace Lab3
             int count = 0;
 
             // code here
-
+            for (int i = 0; i < n; i++) 
+            {
+                double time;
+                double.TryParse(Console.ReadLine(), out time); 
+                if (time <= limit)
+                {
+                    count++;
+                }
+            }
             // end
 
             return count;
@@ -37,12 +72,24 @@ namespace Lab3
         public int Task4(int maxAmount)
         {
             int hours = 0;
-
             // code here
+            int amount = 0;
+            int.TryParse(Console.ReadLine(), out amount);
+            while (amount < maxAmount)
+            {
+                if (hours % 5 != 4 )
+                {
+                    amount += 1;
+                }
+                else
+                {
+                    amount -= 2;
+                }
+                hours++;
+            }
+                // end
 
-            // end
-
-            return hours;
+                return hours;
         }
         public double Task5(int r, int type)
         {
@@ -50,6 +97,19 @@ namespace Lab3
 
             // code here
 
+            switch (type)
+            {
+                case 1:
+                    area = r * r; 
+                    break;
+                case 2: 
+                    area = Math.PI * r * r;
+                    break;
+                case 3:
+                    area = (Math.Sqrt(3) * (r * r)) / 4;
+                    break;
+
+            }
             // end
 
             return area;
